@@ -1,0 +1,17 @@
+{
+    "_hash": "a7050b91a4322c5e862eb21362ccaa93c557e6998960f34acf113420949f1550",
+    "patches": {
+        "drupal/search_api_typesense": [
+            {
+                "package": "drupal/search_api_typesense",
+                "description": "Implement Typesense support for RAG in the AI module",
+                "url": "https://git.drupalcode.org/project/search_api_typesense/-/merge_requests/58.patch",
+                "sha256": "3a98a929a6e814a472eb1fbcf319f51d1798495bbc4ff1cda525419694c5121a",
+                "depth": 1,
+                "extra": {
+                    "provenance": "root"
+                }
+            }
+        ]
+    }
+}

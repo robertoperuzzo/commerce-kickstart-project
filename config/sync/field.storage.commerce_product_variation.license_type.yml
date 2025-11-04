@@ -1,0 +1,21 @@
+uuid: 53c55938-67da-4aeb-abd4-2c74bdf444d4
+langcode: en
+status: true
+dependencies:
+  module:
+    - commerce
+    - commerce_product
+_core:
+  default_config_hash: vHH5JXM7LY8vlj__f5Ed8LeZTq5PrzOYCkOTwBXio2Q
+id: commerce_product_variation.license_type
+field_name: license_type
+entity_type: commerce_product_variation
+type: 'commerce_plugin_item:commerce_license_type'
+settings: {  }
+module: commerce
+locked: true
+cardinality: 1
+translatable: false
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

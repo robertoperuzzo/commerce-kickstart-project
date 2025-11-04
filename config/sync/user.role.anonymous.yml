@@ -1,0 +1,28 @@
+uuid: 3c0ec351-dd76-4944-b348-9299d11f361a
+langcode: en
+status: true
+dependencies:
+  config:
+    - filter.format.restricted_html
+  module:
+    - ai_chatbot
+    - comment
+    - commerce_checkout
+    - commerce_product
+    - filter
+    - media
+    - system
+_core:
+  default_config_hash: j5zLMOdJBqC0bMvSdth5UebkprJB8g_2FXHqhfpJzow
+id: anonymous
+label: 'Anonymous user'
+weight: 0
+is_admin: false
+permissions:
+  - 'access checkout'
+  - 'access comments'
+  - 'access content'
+  - 'access deepchat api'
+  - 'use text format restricted_html'
+  - 'view commerce_product'
+  - 'view media'

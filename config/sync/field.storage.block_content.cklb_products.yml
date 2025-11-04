@@ -1,0 +1,22 @@
+uuid: d01ab61a-6808-4a45-83fc-23761bd3af8f
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_content
+    - commerce_product
+_core:
+  default_config_hash: LrClKcI9xsJtMorBEGqXMY2CbOveQQmMorW2NrGiRic
+id: block_content.cklb_products
+field_name: cklb_products
+entity_type: block_content
+type: entity_reference
+settings:
+  target_type: commerce_product
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

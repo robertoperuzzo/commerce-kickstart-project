@@ -1,0 +1,23 @@
+uuid: 17aaee47-9954-4853-b6d9-2bc5b07ca5ac
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.layout_builder__layout
+    - node.type.cklb_landing_page
+  module:
+    - layout_builder
+_core:
+  default_config_hash: _HDDeRhcDaRfOAjZPU1fovNAJ784aJ3zJKhFpV_oCjI
+id: node.cklb_landing_page.layout_builder__layout
+field_name: layout_builder__layout
+entity_type: node
+bundle: cklb_landing_page
+label: Layout
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: layout_section

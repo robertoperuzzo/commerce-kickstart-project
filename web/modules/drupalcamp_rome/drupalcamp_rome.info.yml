@@ -1,0 +1,10 @@
+name: 'DrupalCamp Rome'
+type: module
+description: 'Contains the custom features for the DrupalCamp Rome demo.'
+package: Custom
+core_version_requirement: ^10 || ^11
+dependencies:
+  - ai_agents:ai_agents
+  - ai_provider_openai:ai_provider_openai
+  - eca:eca
+  - search_api_typesense:search_api_typesense

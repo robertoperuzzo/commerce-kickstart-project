@@ -1,0 +1,15 @@
+_core:
+  default_config_hash: HlN7eAN2N4JIHsYv56V4E7sqC9bS609KwvGFjyD_mgk
+langcode: en
+uuid: ffad9a41-e9c0-406d-bb79-26fc3287724e
+name: 'DrupalCamp Rome Commerce Demo'
+mail: example@mail.com
+slogan: ''
+page:
+  403: ''
+  404: ''
+  front: /frontpage
+admin_compact_mode: false
+weight_select_max: 100
+default_langcode: en
+mail_notification: null

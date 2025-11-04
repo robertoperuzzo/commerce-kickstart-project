@@ -1,0 +1,21 @@
+uuid: 43353405-6d49-440f-be0d-2c6ead9cf2af
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.cklb_title
+    - field.storage.block_content.cklb_title
+_core:
+  default_config_hash: ZhWz9kiyGMNeDM1DdxY00mQ38T-zferskJEFqKbj_CY
+id: block_content.cklb_title.cklb_title
+field_name: cklb_title
+entity_type: block_content
+bundle: cklb_title
+label: Title
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

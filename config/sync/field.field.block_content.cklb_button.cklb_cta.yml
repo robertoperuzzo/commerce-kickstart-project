@@ -1,0 +1,25 @@
+uuid: 734ba398-1baf-48c2-9ca5-d23f43598727
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.cklb_button
+    - field.storage.block_content.cklb_cta
+  module:
+    - link
+_core:
+  default_config_hash: exPqtqMUSsLkPgXdiRDzdfF1k3z-87jVJT-LQ-zBqfg
+id: block_content.cklb_button.cklb_cta
+field_name: cklb_cta
+entity_type: block_content
+bundle: cklb_button
+label: Button
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 1
+  link_type: 17
+field_type: link

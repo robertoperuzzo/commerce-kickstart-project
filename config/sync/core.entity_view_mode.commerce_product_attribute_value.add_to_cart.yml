@@ -1,0 +1,13 @@
+uuid: 9461ac28-9b72-46b6-bcfe-82923ada2286
+langcode: en
+status: true
+dependencies:
+  module:
+    - commerce_product
+_core:
+  default_config_hash: ry5RvX-mOnp2GQWzMqSYjPz-jKfP1nSo4Xo4kJCodlE
+id: commerce_product_attribute_value.add_to_cart
+label: 'Add to Cart Form'
+description: null
+targetEntityType: commerce_product_attribute_value
+cache: true

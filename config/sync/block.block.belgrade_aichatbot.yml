@@ -1,0 +1,32 @@
+uuid: 5fd3e731-354e-4037-bb17-b12d96d3492b
+langcode: en
+status: true
+dependencies:
+  module:
+    - ai_chatbot
+  theme:
+    - belgrade
+id: belgrade_aichatbot
+theme: belgrade
+region: content
+weight: -4
+provider: null
+plugin: ai_chatbot_block
+settings:
+  id: ai_chatbot_block
+  label: 'Shop Assistant'
+  label_display: '0'
+  provider: ai_chatbot
+  ai_assistant: product_support_assistant
+  bot_name: Ketty
+  bot_image: /core/misc/druplicon.png
+  use_username: 1
+  default_username: User
+  use_avatar: 1
+  default_avatar: /core/misc/favicon.ico
+  first_message: 'Hello! How may I help you today?'
+  stream: 1
+  toggle_state: remember
+  output_type: markdown
+  show_structured_results: false
+visibility: {  }

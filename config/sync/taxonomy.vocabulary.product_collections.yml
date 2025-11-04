@@ -1,0 +1,11 @@
+uuid: 8b952379-059a-4884-a9b2-c704ad2b3425
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: jD9ZQcmXePgYS3_NC1kOl_HgklXTXYH6Q0Vy8ffZGz4
+name: 'Product Collections'
+vid: product_collections
+description: null
+weight: 0
+new_revision: false

@@ -1,0 +1,31 @@
+uuid: f4d4128b-1d0b-4b78-96b9-6b606d7a5e0d
+langcode: en
+status: true
+dependencies:
+  config:
+    - facets.facet.product_brand
+  module:
+    - facets
+    - system
+  theme:
+    - belgrade
+_core:
+  default_config_hash: jJ3LjvzbH_LyFKGYfEsgACi63JZy0c2ogyxYdgpVGQ8
+id: productbrand
+theme: belgrade
+region: sidebar_first
+weight: -8
+provider: null
+plugin: 'facet_block:product_brand'
+settings:
+  id: 'facet_block:product_brand'
+  label: Brand
+  label_display: visible
+  provider: facets
+  context_mapping: {  }
+  block_id: productbrand
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/products\r\n/products*"
