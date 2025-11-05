@@ -147,14 +147,6 @@ field_settings:
     dependencies:
       module:
         - commerce_product
-  title:
-    label: 'Variations » Product variation » Title'
-    datasource_id: 'entity:commerce_product'
-    property_path: 'variations:entity:title'
-    type: 'typesense_string[]'
-    dependencies:
-      module:
-        - commerce_product
   type:
     label: 'Variations » Product variation » Product variation type'
     datasource_id: 'entity:commerce_product'
@@ -173,6 +165,14 @@ field_settings:
     label: 'Variations » Product variation » Title'
     datasource_id: 'entity:commerce_product'
     property_path: 'variations:entity:title'
+    type: 'typesense_string[]'
+    dependencies:
+      module:
+        - commerce_product
+  variations_uuid:
+    label: 'Variations » Product variation » UUID'
+    datasource_id: 'entity:commerce_product'
+    property_path: 'variations:entity:uuid'
     type: 'typesense_string[]'
     dependencies:
       module:

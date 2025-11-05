@@ -23,14 +23,20 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
   id: 'drupalcamp_rome:add_to_cart',
   function_name: 'add_to_cart',
   name: 'Add Product to Cart',
-  description: 'Adds a product to the shopping cart by product variation ID.',
+  description: 'Adds a product to the shopping cart by product variation SKU or UUID.',
   group: 'drupalcamp_rome',
   context_definitions: [
-    'product_variation_id' => new ContextDefinition(
-      data_type: 'integer',
-      label: new TranslatableMarkup("Product Variation ID"),
-      required: TRUE,
-      description: new TranslatableMarkup("The product variation ID to add to cart.")
+    'sku' => new ContextDefinition(
+      data_type: 'string',
+      label: new TranslatableMarkup("Product SKU"),
+      required: FALSE,
+      description: new TranslatableMarkup("The product variation SKU to add to cart (e.g., 'SHIRT-001').")
+    ),
+    'uuid' => new ContextDefinition(
+      data_type: 'string',
+      label: new TranslatableMarkup("Product UUID"),
+      required: FALSE,
+      description: new TranslatableMarkup("The product variation UUID to add to cart.")
     ),
     'quantity' => new ContextDefinition(
       data_type: 'string',
@@ -96,18 +102,46 @@ class AddToCart extends FunctionCallBase implements ExecutableFunctionCallInterf
    * {@inheritdoc}
    */
   public function execute(): void {
+    // Initialize output.
+    $this->stringOutput = '';
+
     // Retrieve context values.
-    $product_variation_id = $this->getContextValue('product_variation_id');
+    $sku = $this->getContextValue('sku');
+    $uuid = $this->getContextValue('uuid');
     $quantity = $this->getContextValue('quantity');
     $combine = $this->getContextValue('combine');
 
+    // Validate that at least one identifier is provided.
+    if (empty($sku) && empty($uuid)) {
+      $this->stringOutput = "Error: Either 'sku' or 'uuid' must be provided.";
+      return;
+    }
+
     // Load product variation.
     $variation_storage = $this->entityTypeManager->getStorage('commerce_product_variation');
-    $variation = $variation_storage->load($product_variation_id);
+    $variation = NULL;
 
-    if (!$variation) {
-      $this->stringOutput = "Error: Product variation with ID {$product_variation_id} not found.";
-      return;
+    // Try loading by SKU first (more common use case).
+    if (!empty($sku)) {
+      $variations = $variation_storage->loadByProperties(['sku' => $sku]);
+      if (!empty($variations)) {
+        $variation = reset($variations);
+      }
+      else {
+        $this->stringOutput = "Error: Product variation with SKU '{$sku}' not found.";
+        return;
+      }
+    }
+    // Try loading by UUID if SKU not provided.
+    elseif (!empty($uuid)) {
+      $variations = $variation_storage->loadByProperties(['uuid' => $uuid]);
+      if (!empty($variations)) {
+        $variation = reset($variations);
+      }
+      else {
+        $this->stringOutput = "Error: Product variation with UUID '{$uuid}' not found.";
+        return;
+      }
     }
 
     // Validate variation is purchasable.
@@ -138,10 +172,12 @@ class AddToCart extends FunctionCallBase implements ExecutableFunctionCallInterf
         $combine
       );
 
+      $identifier = !empty($sku) ? "SKU '{$sku}'" : "UUID '{$uuid}'";
       $this->stringOutput = sprintf(
-        'Successfully added %s x "%s" to cart. Order item ID: %s',
+        'Successfully added %s x "%s" (%s) to cart. Order item ID: %s',
         $quantity,
         $variation->getTitle(),
+        $identifier,
         $order_item->id()
       );
     }
