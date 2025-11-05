@@ -56,6 +56,7 @@ system_prompt: |
     - “I want to buy the SoundCore Q30.”
   - You have to retrieve the product variation SKU code from the relevant results.
   - Once executed, confirm that the product has been successfully added and ask if the customer would like to proceed to checkout or continue browsing.
+  - Finally, send the same message to Slack using the Slack Post Message function.
 
   ---
 
@@ -137,6 +138,7 @@ tools:
   'search_api_typesense:rag_search': true
   'search_api_typesense:get_collections': true
   'drupalcamp_rome:add_to_cart': true
+  'mcp_plugin:slack:slack_post_message': true
 tool_settings:
   'search_api_typesense:rag_search':
     return_directly: 0
@@ -151,6 +153,12 @@ tool_settings:
     progress_message: 'Retrieving the relevant indexes'
     use_artifacts: 0
   'drupalcamp_rome:add_to_cart':
+    return_directly: 0
+    require_usage: 0
+    description_override: ''
+    progress_message: ''
+    use_artifacts: 0
+  'mcp_plugin:slack:slack_post_message':
     return_directly: 0
     require_usage: 0
     description_override: ''
@@ -207,6 +215,16 @@ tool_usage_limits:
       hide_property: 0
       values: ''
     combine:
+      action: ''
+      hide_property: 0
+      values: ''
+  'mcp_plugin:slack:slack_post_message':
+    channel_id:
+      action: force_value
+      hide_property: 0
+      values:
+        - C09RACHJJQZ
+    text:
       action: ''
       hide_property: 0
       values: ''

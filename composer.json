@@ -61,6 +61,7 @@
         "drupal/core-project-message": "^11",
         "drupal/core-recommended": "^11",
         "drupal/eca": "^3.0",
+        "drupal/mcp_client": "1.0.x-dev",
         "drupal/search_api_typesense": "1.0.x-dev",
         "drush/drush": "^13",
         "vlucas/phpdotenv": "^5.1",
