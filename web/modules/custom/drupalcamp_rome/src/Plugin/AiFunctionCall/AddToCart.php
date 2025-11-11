@@ -89,13 +89,18 @@ class AddToCart extends FunctionCallBase implements ExecutableFunctionCallInterf
     $plugin_id,
     $plugin_definition
   ): static {
-    $instance = parent::create($container, $configuration, $plugin_id, $plugin_definition);
-    $instance->entityTypeManager = $container->get('entity_type.manager');
-    $instance->cartManager = $container->get('commerce_cart.cart_manager');
-    $instance->cartProvider = $container->get('commerce_cart.cart_provider');
-    $instance->currentUser = $container->get('current_user');
-    $instance->currentStore = $container->get('commerce_store.current_store');
-    return $instance;
+    return new static(
+      $configuration,
+      $plugin_id,
+      $plugin_definition,
+      $container->get('ai.context_definition_normalizer'),
+      $container->get('plugin.manager.ai_data_type_converter'),
+      $container->get('entity_type.manager'),
+      $container->get('commerce_cart.cart_manager'),
+      $container->get('commerce_cart.cart_provider'),
+      $container->get('current_user'),
+      $container->get('commerce_store.current_store'),
+    );
   }
 
   /**
@@ -184,13 +189,6 @@ class AddToCart extends FunctionCallBase implements ExecutableFunctionCallInterf
     catch (\Exception $e) {
       $this->stringOutput = "Error adding to cart: " . $e->getMessage();
     }
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function getReadableOutput(): string {
-    return $this->stringOutput;
   }
 
 }

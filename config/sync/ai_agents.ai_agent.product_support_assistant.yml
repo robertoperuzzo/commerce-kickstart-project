@@ -6,8 +6,6 @@ id: product_support_assistant
 label: 'Product support assistant'
 description: 'An assistant who helps find products and provides support for customers'
 system_prompt: |
-  # AI Agent System Prompt — Product Finder & Customer Support Assistant
-
   ## Role & Purpose
   You are an **AI Customer Support Assistant** that helps users find products, compare options, and get support.  
   You can use external tools to search, retrieve, and present accurate information, as well as help customers add products to their shopping cart.  
@@ -56,11 +54,13 @@ system_prompt: |
     - “I want to buy the SoundCore Q30.”
   - You have to retrieve the product variation SKU code from the relevant results.
   - Once executed, confirm that the product has been successfully added and ask if the customer would like to proceed to checkout or continue browsing.
-  - Finally, send the same message to Slack using the Slack Post Message function.
 
   ---
 
-  ### 5. Final Step
+  ### 5. `slack_post_message`
+  - Use this tool to post the add_to_cart tool response to the Slack channel.
+
+  ### 6. Final Step
   - Analyse the retrieved results or tool outputs.  
   - In case of retrieved results, you have to generate a **helpful, natural-language answer** to the customer’s query.
   - In case of structured tool outputs, evaluate which tool you need to use by passing the obtained data as parameters for the next tool.
@@ -80,12 +80,13 @@ system_prompt: |
     3. `typesense_rag_search`  
     4. Formulate a natural answer  
 
-  - If the user expresses an intent to **buy or add an item**, use the `add_to_cart` tool after confirming the product.  
+  - If the user expresses an intent to **buy or add an item**, use the `add_to_cart` tool after confirming the product. After that, send the add_to_cart function response to the Slack channel using the slack_post_message function. 
   - Ask clarifying questions when the user’s request is ambiguous.  
     > Example: “Do you have a specific brand or price range in mind?”  
   - When providing support or product info, remain **clear, empathetic, and professional**.  
   - If no relevant results are found, apologise politely and offer to refine or broaden the search.  
   - Ensure every recommendation or support answer is **based solely on the internal e-commerce data**.
+  - If the answer is in Markdown, you have to convert in HTML.
 
   ---
 
@@ -99,6 +100,7 @@ system_prompt: |
   - **Price:** Display the Price for the different product's variation(s) from the search results. If the product has more than one variation, please list the title, SKU, and price of each variation.
   - **Goal:** Help the customer achieve their task efficiently and confidently.  
   - **When adding to cart:** Confirm success clearly and offer next-step actions such as “Proceed to checkout” or “Continue shopping.”
+  - **Answer format:** HTML.
 
   ---
 
@@ -137,8 +139,8 @@ secured_system_prompt: '[ai_agent:agent_instructions]'
 tools:
   'search_api_typesense:rag_search': true
   'search_api_typesense:get_collections': true
-  'drupalcamp_rome:add_to_cart': true
   'mcp_plugin:slack:slack_post_message': true
+  'drupalcamp_rome:add_to_cart': true
 tool_settings:
   'search_api_typesense:rag_search':
     return_directly: 0
@@ -150,12 +152,6 @@ tool_settings:
     return_directly: 0
     require_usage: 0
     description_override: ''
-    progress_message: 'Retrieving the relevant indexes'
-    use_artifacts: 0
-  'drupalcamp_rome:add_to_cart':
-    return_directly: 0
-    require_usage: 0
-    description_override: ''
     progress_message: ''
     use_artifacts: 0
   'mcp_plugin:slack:slack_post_message':
@@ -164,7 +160,13 @@ tool_settings:
     description_override: ''
     progress_message: ''
     use_artifacts: 0
-orchestration_agent: true
+  'drupalcamp_rome:add_to_cart':
+    return_directly: 0
+    require_usage: 0
+    description_override: ''
+    progress_message: ''
+    use_artifacts: 0
+orchestration_agent: false
 triage_agent: false
 max_loops: 5
 default_information_tools: ''
@@ -187,17 +189,25 @@ tool_usage_limits:
       hide_property: 0
       values: ''
     distance_threshold:
-      action: force_value
+      action: ''
       hide_property: 0
-      values:
-        - '0.7'
+      values: ''
   'search_api_typesense:get_collections':
     server_id:
+      action: ''
+      hide_property: 0
+      values: ''
+    include_schema:
+      action: ''
+      hide_property: 0
+      values: ''
+  'mcp_plugin:slack:slack_post_message':
+    channel_id:
       action: force_value
       hide_property: 0
       values:
-        - typesense
-    include_schema:
+        - C09RACHJJQZ
+    text:
       action: ''
       hide_property: 0
       values: ''
@@ -215,16 +225,6 @@ tool_usage_limits:
       hide_property: 0
       values: ''
     combine:
-      action: ''
-      hide_property: 0
-      values: ''
-  'mcp_plugin:slack:slack_post_message':
-    channel_id:
-      action: force_value
-      hide_property: 0
-      values:
-        - C09RACHJJQZ
-    text:
       action: ''
       hide_property: 0
       values: ''
