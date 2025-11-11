@@ -1,12 +1,24 @@
 {
-    "_hash": "a7050b91a4322c5e862eb21362ccaa93c557e6998960f34acf113420949f1550",
+    "_hash": "66dd7fc6f3ef23ee0592c9d0f3464de88ac4ef521b220ce30291af2a6426333d",
     "patches": {
         "drupal/search_api_typesense": [
             {
                 "package": "drupal/search_api_typesense",
                 "description": "Implement Typesense support for RAG in the AI module",
                 "url": "https://git.drupalcode.org/project/search_api_typesense/-/merge_requests/58.patch",
-                "sha256": "3a98a929a6e814a472eb1fbcf319f51d1798495bbc4ff1cda525419694c5121a",
+                "sha256": "f086afde117b05db8439b759803b9161ef58ef3c64770558a0b41daba1b8e7d1",
+                "depth": 1,
+                "extra": {
+                    "provenance": "root"
+                }
+            }
+        ],
+        "drupal/mcp_client": [
+            {
+                "package": "drupal/mcp_client",
+                "description": "Adopt a PHP Library",
+                "url": "https://git.drupalcode.org/project/mcp_client/-/merge_requests/2.patch",
+                "sha256": "612a4c5672459240b8d5c6714fa925c849f087eb66e6b0e857defe0eb93374c3",
                 "depth": 1,
                 "extra": {
                     "provenance": "root"

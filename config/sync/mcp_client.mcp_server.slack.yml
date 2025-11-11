@@ -5,7 +5,19 @@ dependencies: {  }
 id: slack
 label: Slack
 description: 'The Slack MCP server connection.'
-endpoint: 'http://host.docker.internal:15000'
+endpoint: ''
+transport_type: stdio
+stdio_command: 'npx -y @modelcontextprotocol/server-slack'
+stdio_env:
+  SLACK_BOT_TOKEN:
+    type: key
+    key_id: slack_bot_token
+  SLACK_TEAM_ID:
+    type: plain
+    value: T09QXFJHW2E
+stdio_cwd: null
+timeout: 30
+http_headers: {  }
 tools:
   slack_list_channels:
     name: slack_list_channels
@@ -129,10 +141,10 @@ tools:
         - user_id
 enabled_tools:
   slack_post_message: slack_post_message
-  slack_list_channels: 0
-  slack_reply_to_thread: 0
-  slack_add_reaction: 0
-  slack_get_channel_history: 0
-  slack_get_thread_replies: 0
-  slack_get_users: 0
-  slack_get_user_profile: 0
+  slack_list_channels: '0'
+  slack_reply_to_thread: '0'
+  slack_add_reaction: '0'
+  slack_get_channel_history: '0'
+  slack_get_thread_replies: '0'
+  slack_get_users: '0'
+  slack_get_user_profile: '0'
