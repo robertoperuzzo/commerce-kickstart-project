@@ -61,8 +61,10 @@
         "drupal/core-project-message": "^11",
         "drupal/core-recommended": "^11",
         "drupal/eca": "^3.0",
+        "drupal/mcp_client": "1.0.x-dev",
         "drupal/search_api_typesense": "1.0.x-dev",
         "drush/drush": "^13",
+        "swisnl/mcp-client": "^0.3",
         "vlucas/phpdotenv": "^5.1",
         "webflo/drupal-finder": "^1.2",
         "webmozart/path-util": "^2.3"
@@ -102,6 +104,9 @@
         "patches": {
             "drupal/search_api_typesense": {
                 "Implement Typesense support for RAG in the AI module": "https://git.drupalcode.org/project/search_api_typesense/-/merge_requests/58.patch"
+            },
+            "drupal/mcp_client": {
+                "Adopt a PHP Library": "https://git.drupalcode.org/project/mcp_client/-/merge_requests/2.patch"
             }
         },
         "patchLevel": {

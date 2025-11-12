@@ -1,25 +1,25 @@
-uuid: 5fd3e731-354e-4037-bb17-b12d96d3492b
+uuid: e9220216-c99d-4651-9bd5-922b8df675e0
 langcode: en
-status: false
+status: true
 dependencies:
   module:
     - ai_chatbot
   theme:
     - belgrade
-id: belgrade_aichatbot
+id: belgrade_shopassistant
 theme: belgrade
 region: content
-weight: -4
+weight: 0
 provider: null
-plugin: ai_chatbot_block
+plugin: ai_deepchat_block
 settings:
-  id: ai_chatbot_block
+  id: ai_deepchat_block
   label: 'Shop Assistant'
-  label_display: '0'
+  label_display: visible
   provider: ai_chatbot
   ai_assistant: product_support_assistant
   bot_name: Ketty
-  bot_image: /core/misc/druplicon.png
+  bot_image: /modules/contrib/ai/modules/ai_chatbot/assets/ai-star-avatar.svg
   use_username: 1
   default_username: User
   use_avatar: 1
@@ -27,6 +27,12 @@ settings:
   first_message: 'Hello! How may I help you today?'
   stream: 1
   toggle_state: remember
-  output_type: markdown
+  width: auto
+  height: 100%
+  placement: bottom-right
   show_structured_results: false
+  show_copy_icon: true
+  collapse_minimal: false
+  style_file: 'module:ai_chatbot:bard.yml'
+  verbose_mode: true
 visibility: {  }
