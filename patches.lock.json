@@ -1,5 +1,5 @@
 {
-    "_hash": "66dd7fc6f3ef23ee0592c9d0f3464de88ac4ef521b220ce30291af2a6426333d",
+    "_hash": "b964446be67e689922557fc3da04abc2dbb710ee9ae3086304405bd1b56604d8",
     "patches": {
         "drupal/search_api_typesense": [
             {
@@ -18,7 +18,7 @@
                 "package": "drupal/mcp_client",
                 "description": "Adopt a PHP Library",
                 "url": "https://git.drupalcode.org/project/mcp_client/-/merge_requests/2.patch",
-                "sha256": "612a4c5672459240b8d5c6714fa925c849f087eb66e6b0e857defe0eb93374c3",
+                "sha256": "0517ea76f1de7fb8111bd46c9287f99ebe86e515247b13179afe2ba9068df519",
                 "depth": 1,
                 "extra": {
                     "provenance": "root"

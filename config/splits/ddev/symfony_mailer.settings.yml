@@ -1,2 +1,1 @@
-default_transport: sendmail
-override: {  }
+default_transport: ddev_smtp
